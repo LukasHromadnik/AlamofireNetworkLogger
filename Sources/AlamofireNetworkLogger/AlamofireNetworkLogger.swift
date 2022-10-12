@@ -32,7 +32,7 @@ public final class AlamofireNetworkLogger: EventMonitor {
         let interval = response.metrics
             .map(\.taskInterval.duration)
             .map(NSNumber.init(value:))
-            .flatMap(Logger.taskDurationFormatter.string(from:))
+            .flatMap(Self.taskDurationFormatter.string(from:))
 
         let responseFormatted: [String?] = [
             "[", Date().description, "]",
