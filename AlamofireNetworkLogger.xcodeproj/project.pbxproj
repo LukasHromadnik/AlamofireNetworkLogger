@@ -9,22 +9,7 @@
 /* Begin PBXBuildFile section */
 		A34109F528F719430024A57F /* AlamofireNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34109F428F719430024A57F /* AlamofireNetworkLogger.swift */; };
 		A34109F828F7197A0024A57F /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34109F728F7197A0024A57F /* Alamofire.xcframework */; };
-		A34109F928F7197A0024A57F /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A34109F728F7197A0024A57F /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A34109FA28F7197B0024A57F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A34109F928F7197A0024A57F /* Alamofire.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A34109E928F7190C0024A57F /* AlamofireNetworkLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireNetworkLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +83,6 @@
 				A34109E528F7190C0024A57F /* Sources */,
 				A34109E628F7190C0024A57F /* Frameworks */,
 				A34109E728F7190C0024A57F /* Resources */,
-				A34109FA28F7197B0024A57F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
