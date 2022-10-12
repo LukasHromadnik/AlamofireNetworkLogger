@@ -1,7 +1,7 @@
 import Alamofire
 import Foundation
 
-public final class Logger: EventMonitor {
+public final class AlamofireNetworkLogger: EventMonitor {
     private static let taskDurationFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 4
