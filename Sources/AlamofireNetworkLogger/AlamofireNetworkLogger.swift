@@ -8,6 +8,8 @@ public final class Logger: EventMonitor {
         return formatter
     }()
 
+    public init() { }
+
     // Event called when any type of Request is resumed.
     public func requestDidResume(_ request: Request) {
         guard let url = request.request?.url?.absoluteString else { return }
