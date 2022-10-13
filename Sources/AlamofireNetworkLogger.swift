@@ -2,17 +2,30 @@ import Alamofire
 import Foundation
 
 public final class AlamofireNetworkLogger: EventMonitor {
+    public enum LogLevel {
+        case none
+        case light
+        case verbose
+    }
+
     private static let taskDurationFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 4
         return formatter
     }()
 
-    public init() { }
+    private let logLevel: LogLevel
+
+    public init(logLevel: LogLevel) {
+        self.logLevel = logLevel
+    }
 
     // Event called when any type of Request is resumed.
     public func requestDidResume(_ request: Request) {
-        guard let url = request.request?.url?.absoluteString else { return }
+        guard
+            logLevel != .none,
+            let url = request.request?.url?.absoluteString
+        else { return }
 
         let requestFormatted = [
             "[", Date().description, "]",
@@ -21,13 +34,18 @@ public final class AlamofireNetworkLogger: EventMonitor {
         ]
         print(requestFormatted.joined(separator: ""))
 
-        printHeaders(request.request?.allHTTPHeaderFields)
-        printBody(request.request?.httpBody)
+        if logLevel == .verbose {
+            printHeaders(request.request?.allHTTPHeaderFields)
+            printBody(request.request?.httpBody)
+        }
     }
 
     // Event called whenever a DataRequest has parsed a response.
     public func request<Value>(_ request: Alamofire.DataRequest, didParseResponse response: Alamofire.DataResponse<Value, AFError>) {
-        guard let url = request.request?.url?.absoluteString else { return }
+        guard
+            logLevel != .none,
+            let url = request.request?.url?.absoluteString
+        else { return }
 
         let interval = response.metrics
             .map(\.taskInterval.duration)
@@ -43,8 +61,10 @@ public final class AlamofireNetworkLogger: EventMonitor {
         ]
         print(responseFormatted.compactMap { $0 }.joined(separator: ""))
 
-        printHeaders(response.response?.allHeaderFields)
-        printBody(response.data)
+        if logLevel == .verbose {
+            printHeaders(response.response?.allHeaderFields)
+            printBody(response.data)
+        }
     }
 
     private func printHeaders<Key: Hashable, Value>(_ headers: [Key: Value]?) {
