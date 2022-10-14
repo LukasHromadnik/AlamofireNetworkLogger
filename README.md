@@ -17,7 +17,7 @@ Body: {
 
 ...
 
-⬇️ POST https://ackee.cz/examples (✅ 201 Created) [time: 0.54741 s]
+⬇️ POST https://ackee.cz/examples (✅ 201 Created) [0.54741 s]
 Headers: [
     Vary : Authorization,Accept-Encoding
     Content-Encoding : gzip
@@ -42,7 +42,7 @@ github LukasHromadnik/AlamofireNetworkLogger
 
 ## Usage
 
-AlamofireNetworkLogger is direct implementation of Alamofire's `EventMonitor`. To integrate it you need to pass it to `Session`
+AlamofireNetworkLogger is a direct implementation of Alamofire's `EventMonitor`. To integrate it you need to pass it to `Session`
 
 ```swift
 let logger = AlamofireNetworkLogger(logLevel: .verbose)
@@ -61,6 +61,6 @@ Right now the only possible configuration is `logLevel` and it's passed to Alamo
 
 | Value | Description |
 | ---   | ---         |
-| `.none` | Nothing will be printed to console |
+| `.none` | Nothing will be printed to the console |
 | `.light` | Only the URL, status code and duration time will be printed |
 | `.verbose` | Everything will appear in the console |
