@@ -49,7 +49,7 @@
 		A34109F328F719330024A57F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				A34109F428F719430024A57F /* AlamofireNetworkLogger.swift */,
+				A3C89B2028F93E5900848021 /* AlamofireNetworkLogger */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -60,6 +60,14 @@
 				A34109F728F7197A0024A57F /* Alamofire.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3C89B2028F93E5900848021 /* AlamofireNetworkLogger */ = {
+			isa = PBXGroup;
+			children = (
+				A34109F428F719430024A57F /* AlamofireNetworkLogger.swift */,
+			);
+			path = AlamofireNetworkLogger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
