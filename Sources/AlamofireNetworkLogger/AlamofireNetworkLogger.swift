@@ -41,7 +41,7 @@ public final class AlamofireNetworkLogger: EventMonitor {
     }
 
     // Event called whenever a DataRequest has parsed a response.
-    public func request<Value>(_ request: Alamofire.DataRequest, didParseResponse response: Alamofire.DataResponse<Value, AFError>) {
+    public func request(_ request: DataRequest, didParseResponse response: DataResponse<Data?, AFError>) {
         guard
             logLevel != .none,
             let url = request.request?.url?.absoluteString
