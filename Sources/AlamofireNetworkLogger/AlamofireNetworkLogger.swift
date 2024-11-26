@@ -2,7 +2,7 @@ import Alamofire
 import Foundation
 
 public final class AlamofireNetworkLogger: EventMonitor {
-    public enum LogLevel {
+    public enum LogLevel: Sendable{
         case none
         case light
         case verbose
@@ -21,7 +21,9 @@ public final class AlamofireNetworkLogger: EventMonitor {
     }
 
     // Event called when any type of Request is resumed.
-    public func requestDidResume(_ request: Request) {
+    public func requestDidResume(
+        _ request: Request
+    ) {
         guard
             logLevel != .none,
             let url = request.request?.url?.absoluteString
@@ -41,7 +43,10 @@ public final class AlamofireNetworkLogger: EventMonitor {
     }
 
     // Event called whenever a DataRequest has parsed a response.
-    public func request(_ request: DataRequest, didParseResponse response: DataResponse<Data?, AFError>) {
+    public func request<Value>(
+        _ request: DataRequest,
+        didParseResponse response: DataResponse<Value, AFError>
+    ) where Value: Sendable {
         guard
             logLevel != .none,
             let url = request.request?.url?.absoluteString
@@ -67,7 +72,9 @@ public final class AlamofireNetworkLogger: EventMonitor {
         }
     }
 
-    private func printHeaders<Key: Hashable, Value>(_ headers: [Key: Value]?) {
+    private func printHeaders<Key: Hashable, Value>(
+        _ headers: [Key: Value]?
+    ) {
         if let headers, !headers.isEmpty {
             print("Headers: [")
             headers.forEach { key, value in
@@ -77,7 +84,9 @@ public final class AlamofireNetworkLogger: EventMonitor {
         }
     }
 
-    private func printBody(_ body: Data?) {
+    private func printBody(
+        _ body: Data?
+    ) {
         guard let body else { return }
 
         if
@@ -91,7 +100,9 @@ public final class AlamofireNetworkLogger: EventMonitor {
         }
     }
 
-    private func formattedStatusCode(_ statusCode: Int) -> String {
+    private func formattedStatusCode(
+        _ statusCode: Int
+    ) -> String {
         var formatted = "("
 
         if
